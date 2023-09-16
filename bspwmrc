@@ -1,0 +1,27 @@
+#! /bin/sh
+
+# Autostart
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+xsetroot -cursor_name left_ptr &
+picom &
+~/.config/polybar/launch.sh &
+# Background 
+feh --bg-fill ~/personal/images/wallpapers/Wave_Circle.png
+
+# Workspaces
+bspc monitor -d 1 2 3 4 5
+
+#configuration
+bspc config border_width        1
+bspc config window_gap		0
+bspc config top_padding		30
+bspc config split_ratio         0.52
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+bspc rule -a Gimp desktop='^5' follow=on
+bspc rule -a Google-chrome desktop='^2' follow=on
+bspc rule -a spotify desktop='^4'
+bspc rule -a discord desktop='^4'
+bspc rule -a mplayer2 state=floating
